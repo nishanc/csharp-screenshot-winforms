@@ -55,34 +55,6 @@ namespace Screenshot
 
         Rectangle Top { get { return new Rectangle(0, 0, this.ClientSize.Width, _); } }
         Rectangle Left { get { return new Rectangle(0, 0, _, this.ClientSize.Height); } }
-
-        private void panelDrag_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
-            }
-        }
-
-        private void SelectArea_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCaptureThis_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Save save = new Save(this.Location.X, this.Location.Y, this.Width, this.Height, this.Size);
-            save.Show();
-        }
-
-
-
-
-
-
-
         Rectangle Bottom { get { return new Rectangle(0, this.ClientSize.Height - _, this.ClientSize.Width, _); } }
         Rectangle Right { get { return new Rectangle(this.ClientSize.Width - _, 0, _, this.ClientSize.Height); } }
         Rectangle TopLeft { get { return new Rectangle(0, 0, _, _); } }
@@ -109,6 +81,21 @@ namespace Screenshot
                 else if (Right.Contains(cursor)) message.Result = (IntPtr)HTRIGHT;
                 else if (Bottom.Contains(cursor)) message.Result = (IntPtr)HTBOTTOM;
             }
+        }
+        private void panelDrag_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
+        }
+
+        private void btnCaptureThis_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Save save = new Save(this.Location.X, this.Location.Y, this.Width, this.Height, this.Size);
+            save.Show();
         }
     }
 }

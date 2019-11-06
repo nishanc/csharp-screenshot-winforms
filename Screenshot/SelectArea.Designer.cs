@@ -68,7 +68,6 @@
             this.Name = "SelectArea";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Area";
-            this.Load += new System.EventHandler(this.SelectArea_Load);
             this.panelDrag.ResumeLayout(false);
             this.ResumeLayout(false);
 
